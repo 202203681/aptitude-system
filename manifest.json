@@ -1,0 +1,26 @@
+{
+    "name": "Smart Aptitude Testing System",
+    "short_name": "SATS",
+    "description": "Digital aptitude testing for Eswatini secondary schools",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#003399",
+    "theme_color": "#CE9F32",
+    "icons": [
+        {
+            "src": "/assets/images/icon-72x72.png",
+            "sizes": "72x72",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/images/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/images/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
