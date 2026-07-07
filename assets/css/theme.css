@@ -1,0 +1,294 @@
+/* assets/css/theme.css - Dynamic Theming System */
+
+:root {
+    /* Default Theme */
+    --primary: #003399;
+    --primary-dark: #001a66;
+    --primary-light: #3366cc;
+    --secondary: #CE9F32;
+    --secondary-dark: #b8860b;
+    --accent: #ff6b35;
+    --success: #28a745;
+    --danger: #dc3545;
+    --warning: #ffc107;
+    --info: #17a2b8;
+    --dark: #1a2a3a;
+    --light: #f8f9fa;
+    --gradient-start: #003399;
+    --gradient-end: #001a66;
+    --card-bg: white;
+    --text-primary: #333;
+    --text-secondary: #666;
+}
+
+/* Quantitative Aptitude Theme - Blue/Teal */
+[data-theme="quantitative"] {
+    --primary: #0d47a1;
+    --primary-dark: #002171;
+    --primary-light: #5472d3;
+    --secondary: #00acc1;
+    --secondary-dark: #007c91;
+    --accent: #ff6d00;
+    --gradient-start: #0d47a1;
+    --gradient-end: #00acc1;
+}
+
+/* Logical Reasoning Theme - Purple/Magenta */
+[data-theme="logical"] {
+    --primary: #4a148c;
+    --primary-dark: #230070;
+    --primary-light: #7c43bd;
+    --secondary: #e91e63;
+    --secondary-dark: #b0003a;
+    --accent: #ff9800;
+    --gradient-start: #4a148c;
+    --gradient-end: #e91e63;
+}
+
+/* Verbal Ability Theme - Green/Gold */
+[data-theme="verbal"] {
+    --primary: #1b5e20;
+    --primary-dark: #003300;
+    --primary-light: #4c8c4a;
+    --secondary: #ffc107;
+    --secondary-dark: #c79100;
+    --accent: #ff5722;
+    --gradient-start: #1b5e20;
+    --gradient-end: #ffc107;
+}
+
+/* Mixed/Default Theme - Eswatini Colors */
+[data-theme="mixed"] {
+    --primary: #003399;
+    --primary-dark: #001a66;
+    --primary-light: #3366cc;
+    --secondary: #CE9F32;
+    --secondary-dark: #b8860b;
+    --accent: #e74c3c;
+    --gradient-start: #003399;
+    --gradient-end: #CE9F32;
+}
+
+/* Dark Theme Option */
+[data-theme="dark"] {
+    --primary: #1a1a2e;
+    --primary-dark: #0f0f1a;
+    --primary-light: #2d2d44;
+    --secondary: #e94560;
+    --secondary-dark: #c62a47;
+    --accent: #ffd700;
+    --gradient-start: #1a1a2e;
+    --gradient-end: #16213e;
+    --card-bg: #1e1e2e;
+    --text-primary: #eee;
+    --text-secondary: #aaa;
+}
+
+/* Apply Theme Variables */
+body {
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.card, .stat-card, .menu-card, .question-card, .timer-card, .recommendation-card {
+    background: var(--card-bg);
+    transition: all 0.3s ease;
+}
+
+/* Theme Transition Animation */
+.theme-transition {
+    animation: themePulse 0.5s ease;
+}
+
+@keyframes themePulse {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; background: var(--primary-light); }
+    100% { opacity: 1; }
+}
+
+/* Category Cards Animation */
+.category-card {
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.category-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.category-card:hover::before {
+    left: 100%;
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.float-animation {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse Animation for Buttons */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.btn-primary:hover {
+    animation: pulse 0.5s ease;
+}
+
+/* Slide In Animations */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-in-left {
+    animation: slideInLeft 0.5s ease forwards;
+}
+
+.slide-in-right {
+    animation: slideInRight 0.5s ease forwards;
+}
+
+.slide-in-up {
+    animation: slideInUp 0.5s ease forwards;
+}
+
+/* Stagger Children Animations */
+.stagger-children > * {
+    opacity: 0;
+    animation: slideInUp 0.5s ease forwards;
+}
+
+.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
+
+/* Ripple Effect */
+.ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s;
+}
+
+.ripple:active:after {
+    width: 200%;
+    height: 200%;
+}
+
+/* Progress Bar Animation */
+.progress-bar-animated {
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    background-size: 200% 100%;
+    animation: gradientShift 2s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Glassmorphism Effect */
+.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+}
+
+/* Neumorphism Effect */
+.neumorph {
+    background: var(--card-bg);
+    box-shadow: 9px 9px 16px rgba(0,0,0,0.1), -9px -9px 16px rgba(255,255,255,0.5);
+    border-radius: 30px;
+}
+
+/* Particle Background */
+.particle-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    animation: floatParticle linear infinite;
+}
+
+@keyframes floatParticle {
+    from {
+        transform: translateY(100vh) rotate(0deg);
+    }
+    to {
+        transform: translateY(-100vh) rotate(360deg);
+    }
+}
