@@ -1,0 +1,6 @@
+# uploads/.htaccess
+Options -Indexes
+<FilesMatch "\.(jpg|jpeg|png|gif)$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
